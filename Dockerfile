@@ -1,5 +1,5 @@
 FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
-  
+
 # To use a different model, change the model URL below:
 ARG MODEL_URL='https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt'
 
@@ -9,7 +9,8 @@ ARG HF_TOKEN=''
 
 RUN apt update && apt-get -y install git wget \
     python3.10 python3.10-venv python3-pip \
-    build-essential libgl-dev libglib2.0-0 vim
+    build-essential libgl-dev libglib2.0-0 vim \
+    git-lfs
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 RUN useradd -ms /bin/bash banana
@@ -37,6 +38,10 @@ RUN pip install dill
 
 RUN mkdir -p extensions/banana/scripts
 ADD script.py extensions/banana/scripts/banana.py
+RUN git lfs install
+RUN git clone https://github.com/Mikubill/sd-webui-controlnet extensions/sd-webui-controlnet
+RUN git clone https://huggingface.co/kohya-ss/ControlNet-diff-modules
+RUN mv ControlNet-diff-modules/*.safetensors extensions/sd-webui-controlnet/models
 ADD app.py app.py
 ADD server.py server.py
 

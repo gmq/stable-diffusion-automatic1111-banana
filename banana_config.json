@@ -1,5 +1,5 @@
 {
-  "name": "AUTOMATIC1111 - Stable Diffusion v1.5",
+  "name": "AUTOMATIC1111 - Stable Diffusion v1.5 with ControlNet",
   "category": "Computer Vision",
   "example_input": {
     "endpoint": "txt2img",
@@ -14,7 +14,9 @@
       "n_iter": 1,
       "width": 512,
       "height": 512,
-      "tiling": false
+      "tiling": false,
+      "controlnet_image": null,
+      "controlnet_model": "canny"
     }
   },
   "example_output": {
