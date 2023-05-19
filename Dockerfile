@@ -1,11 +1,11 @@
 FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
 
 # To use a different model, change the model URL below:
-ARG MODEL_URL='https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt'
+ARG MODEL_URL='https://huggingface.co/JonnyO/nmcrds/resolve/main/makeshift%20namecards%20model%20v1_UX2FDSXCHtlkagE69nQz_20230419165107_MiScB29f.ckpt'
 
 # If you are using a private Huggingface model (sign in required to download) insert your Huggingface
 # access token (https://huggingface.co/settings/tokens) below:
-ARG HF_TOKEN=''
+ARG HF_TOKEN='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'
 
 RUN apt update && apt-get -y install git wget \
     python3.10 python3.10-venv python3-pip \
